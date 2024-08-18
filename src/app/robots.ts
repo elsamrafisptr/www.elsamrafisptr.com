@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const domain = process.env.DOMAIN || `https://www.codebayu.com`;
+  const domain = "http://localhost:3000" || "https://www.elsamrafisptr.vercel.app";
   return {
     rules: {
       userAgent: "*",

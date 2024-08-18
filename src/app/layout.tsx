@@ -10,7 +10,7 @@ import { DATA } from "@/data/resume";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NODE_ENV === "development" ? "http://localhost:3000" : process.env.DOMAIN || ""),
+  // metadataBase: new URL(process.env.NODE_ENV === "development" ? "http://localhost:3000" : process.env.DOMAIN || ""),
   title: {
     default: DATA.name,
     template: `%s | Personal Website`,

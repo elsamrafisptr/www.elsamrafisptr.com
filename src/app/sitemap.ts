@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const domain = process.env.DOMAIN || "https://www.codebayu.com/";
+  const domain = "http://localhost:3000" || "https://www.elsamrafisptr.vercel.app";
   return [
     {
       url: domain,
@@ -10,19 +10,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${domain}/roadmap?tribe=frontend-developer`,
+      url: `${domain}/about`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: `${domain}/blog`,
+      url: `${domain}/project`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: `${domain}/learn`,
+      url: `${domain}/contact`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
