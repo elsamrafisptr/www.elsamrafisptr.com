@@ -1,5 +1,5 @@
 import Container from "@/components/elements/Container";
-import WarningSection from "@/components/elements/warningSection";
+import WarningSection from "@/components/elements/WarningSection";
 
 const Dashboard = () => {
   return (
