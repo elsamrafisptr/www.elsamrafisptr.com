@@ -1,17 +1,9 @@
 "use client";
 
 import Container from "@/components/elements/Container";
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 const invoices = [
   {
@@ -61,10 +53,32 @@ const invoices = [
 const ContentManagementPage = () => {
   const searchParams = useSearchParams();
   const search = searchParams.get("collection");
+
   return (
     <Container className="flex flex-col gap-12">
       <div>
         <h1>Collection Type</h1>
+        {/* Example: Display invoices data */}
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Invoice</TableHead>
+              <TableHead>Payment Status</TableHead>
+              <TableHead>Total Amount</TableHead>
+              <TableHead>Payment Method</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {invoices.map((invoice) => (
+              <TableRow key={invoice.invoice}>
+                <TableCell>{invoice.invoice}</TableCell>
+                <TableCell>{invoice.paymentStatus}</TableCell>
+                <TableCell>{invoice.totalAmount}</TableCell>
+                <TableCell>{invoice.paymentMethod}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </div>
       <div>
         <h1>Single Type</h1>
@@ -73,4 +87,12 @@ const ContentManagementPage = () => {
   );
 };
 
-export default ContentManagementPage;
+const ContentManagementPageWrapper = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ContentManagementPage />
+    </Suspense>
+  );
+};
+
+export default ContentManagementPageWrapper;
