@@ -6,26 +6,33 @@ import MobileBar from "../elements/MobileBar";
 import useIsMobile from "@/hooks/useIsMobile";
 import { useSidebarStore } from "@/stores/sidebarStore";
 import { cn } from "@/lib/utils";
+import AccountBar from "../elements/AccountBar";
+import { SessionProvider } from "next-auth/react";
+
 interface LayoutsProps {
   children: ReactNode;
 }
 const Layouts = ({ children }: LayoutsProps) => {
-  const isOpen = useSidebarStore((state) => state.isOpen);
   const isMobile = useIsMobile();
+
   return (
     <div
-      className="flex flex-col lg:flex-row lg:gap-5 justify-center overflow-x-hidden bg-[#FAFAFA] dark:bg-[#1E1E1E]"
+      className={cn(
+        "flex flex-col lg:flex-row lg:gap-5 overflow-x-hidden justify-center bg-white dark:bg-[#1E1E1E] transition-all duration-300",
+      )}
       suppressHydrationWarning
     >
-      {isMobile ? <MobileBar /> : <SideBar />}
-      <main
-        className={cn(
-          "no-scrollbar w-full scroll-smooth transition-all duration-300 lg:min-h-screen bg-[#FAFAFA] dark:bg-[#1E1E1E] px-2 md:px-0 pt-2 pb-24 md:py-6",
-          isOpen ? "lg:max-w-[736px]" : "lg:max-w-[864px]",
-        )}
-      >
-        {children}
-      </main>
+      <SessionProvider>
+        {isMobile ? <MobileBar /> : <SideBar />}
+        <main
+          className={cn(
+            "no-scrollbar  w-full scroll-smooth lg:max-w-[840px] transition-all duration-300 lg:min-h-screen bg-white dark:bg-[#1E1E1E] px-2 md:px-0 pt-2 pb-24 md:py-6",
+          )}
+        >
+          {children}
+        </main>
+        {isMobile ? null : <AccountBar />}
+      </SessionProvider>
     </div>
   );
 };

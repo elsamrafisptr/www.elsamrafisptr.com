@@ -6,8 +6,8 @@ import generateRandomIndex from "@/services/generateRandomIndex";
 
 const ProjectList = () => {
   return (
-    <Container className="mt-4 md:mt-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+    <Container className="mt-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {generateRandomIndex(PROJECTSECTION.projects.length, PROJECTSECTION.projects).map((item, index) => {
           return (
             <BlurFade key={index} delay={0.04 * 5 * (index + 0.5)}>

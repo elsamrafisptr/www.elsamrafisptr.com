@@ -6,6 +6,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/elements/ThemeProvider";
 import { cn } from "@/lib/utils";
 import { DATA } from "@/data/resume";
+import { SessionProvider } from "next-auth/react";
+import { checkPermission } from "@/services/auth/authSession";
 
 const inter = Inter({ subsets: ["latin"] });
 

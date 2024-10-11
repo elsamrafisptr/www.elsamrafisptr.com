@@ -4,12 +4,15 @@ import WorkExperience from "./WorkExperience";
 import Education from "./Education";
 import Skills from "./Skills";
 import { Separator } from "@/components/ui/separator";
+import Container from "@/components/elements/Container";
 
 const About = () => {
   return (
     <>
       <Headline />
-      <Separator className="my-4 md:my-6" />
+      <Container>
+        <Separator />
+      </Container>
       <WorkExperience />
       <Education />
       <Skills />

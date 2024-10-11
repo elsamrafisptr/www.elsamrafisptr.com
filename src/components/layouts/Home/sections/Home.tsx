@@ -3,12 +3,15 @@ import Headline from "./Headline";
 import Services from "./Services";
 import Projects from "./Projects";
 import { Separator } from "@/components/ui/separator";
+import Container from "@/components/elements/Container";
 
 const Home = () => {
   return (
     <>
       <Headline />
-      <Separator className="my-4 md:my-6" />
+      <Container>
+        <Separator className="" />
+      </Container>
       <Services />
       <Projects />
     </>
